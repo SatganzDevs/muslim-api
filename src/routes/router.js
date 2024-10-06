@@ -124,7 +124,7 @@ router.get("/", (req, res) =>
         contoh: "/hadits/1",
       },
     },
-    maintaner: "Otang45",
+    maintaner: "krniwnstria",
   })
 );
 router.get("/quran/surah", quran.getAllSurah);
