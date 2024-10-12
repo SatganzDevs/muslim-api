@@ -16,119 +16,34 @@ router.get((req, res, next) => {
 
 // API documentation endpoint
 router.get("/", (req, res) =>
-  res.status(200).send({
-    quran: {
-      surah: {
-        daftarSurah: {
-          pattern: "/quran/surah",
-        },
-        infoSurah: {
-          pattern: "/quran/surah/{surahId}",
-          contoh: "/quran/surah/114",
-        },
-      },
-      juz: {
-        daftarJuz: {
-          pattern: "/quran/juz",
-        },
-        infoJuz: {
-          pattern: "/quran/juz/{juzId}",
-          contoh: "/quran/juz/30",
-        },
-      },
-      ayat: {
-        semuaAyat: {
-          pattern: "/quran/ayah",
-        },
-        spesifikSurah: {
-          pattern: "/quran/ayah/surah/{surahId}",
-          contoh: "/quran/ayah/surah/114",
-        },
-        spesifikAyat: {
-          pattern: "/quran/ayah/{surahId}/{ayahId}",
-          contoh: "/quran/ayah/114/1",
-        },
-        spesifikJuz: {
-          pattern: "/quran/ayah/juz/{juzId}",
-          contoh: "/quran/ayah/juz/30",
-        },
-        spesifikHalaman: {
-          pattern: "/quran/ayah/page/{pageId}",
-          contoh: "/quran/ayah/page/604",
-        },
-        ayatRange: {
-          pattern: "/quran/ayah/{surahId}/{start}-{end}",
-          contoh: "/quran/ayah/114/1-3",
-        },
-      },
-      asbabNujul: {
-        semua: {
-          pattern: "/quran/asbab",
-        },
-        spesifik: {
-          pattern: "/quran/asbab/{id}",
-          contoh: "/quran/asbab/1",
-        },
-      },
-      asmaulHusna: "/quran/asma",
-      tafsir: {
-        semua: {
-          pattern: "/quran/tafsir",
-        },
-        spesifik: {
-          pattern: "/quran/tafsir/{id}",
-          contoh: "/quran/tafsir/1",
-        },
-      },
-      tema: {
-        semua: {
-          pattern: "/quran/theme",
-        },
-        spesifik: {
-          pattern: "/quran/theme/{id}",
-          contoh: "/quran/theme/1",
-        },
-      },
-      kataPerKata: {
-        semua: {
-          pattern: "/quran/word",
-        },
-        spesifikSurah: {
-          pattern: "/quran/word/{surahId}",
-          contoh: "/quran/word/1",
-        },
-        spesifikAyat: {
-          pattern: "/quran/word/{surahId}/{ayahId}",
-          contoh: "/quran/word/1/1",
-        },
-      },
-    },
-    doa: {
-      semua: {
-        pattern: "/doa",
-      },
-      spesifik: {
-        pattern: "/doa/{sumber}",
-        sumber: "quran, hadits, pilihan, harian, ibadah, haji, lainnya",
-        contoh: "/doa/harian",
-      },
-    },
-    dzikir: {
-      pattern: "/dzikir/{sumber}",
-      sumber: "pagi, sore, solat",
-      contoh: "/dzikir/pagi",
-    },
-    hadits: {
-      semua: {
-        pattern: "/hadits",
-      },
-      spesifik: {
-        pattern: "/hadits/{nomor}",
-        contoh: "/hadits/1",
-      },
-    },
-    maintaner: "Otang45",
-  })
+  res.send(`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SwaggerUI" />
+    <title>SwaggerUI</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css" />
+  </head>
+  <body>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js" crossorigin></script>
+  <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js" crossorigin></script>
+  <script>
+    window.onload = () => {
+      window.ui = SwaggerUIBundle({
+        url: 'https://raw.githubusercontent.com/SatganzDevs/muslim-api/refs/heads/main/docs.json',
+        dom_id: '#swagger-ui',
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        layout: "StandaloneLayout",
+      });
+    };
+  </script>
+  </body>
+</html>`)
 );
 
 // Quran routes
