@@ -1,0 +1,453 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Quran API",
+    "description": "This is a simple API",
+    "contact": {
+      "email": "satganzdevs@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/SATGANZDEVS_1/MuslimApi/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    },
+    {
+      "url": "https://muslim-api-two.vercel.app/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "quran",
+      "description": "Quran-related operations"
+    },
+    {
+      "name": "doa",
+      "description": "Doa-related operations"
+    },
+    {
+      "name": "dzikir",
+      "description": "Dzikir-related operations"
+    },
+    {
+      "name": "hadits",
+      "description": "Hadits-related operations"
+    }
+  ],
+  "paths": {
+    "/quran/surah": {
+      "get": {
+        "tags": [
+          "quran"
+        ],
+        "summary": "Get all Surah",
+        "operationId": "getAllSurah",
+        "responses": {
+          "200": {
+            "description": "List of all Surah",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quran/surah/{surahId}": {
+      "get": {
+        "tags": [
+          "quran"
+        ],
+        "summary": "Get specific Surah",
+        "operationId": "getSurah",
+        "parameters": [
+          {
+            "name": "surahId",
+            "in": "path",
+            "description": "The ID of the Surah",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the Surah",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quran/juz": {
+      "get": {
+        "tags": [
+          "quran"
+        ],
+        "summary": "Get all Juz",
+        "operationId": "getAllJuz",
+        "responses": {
+          "200": {
+            "description": "List of all Juz",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quran/juz/{juzId}": {
+      "get": {
+        "tags": [
+          "quran"
+        ],
+        "summary": "Get specific Juz",
+        "operationId": "getJuz",
+        "parameters": [
+          {
+            "name": "juzId",
+            "in": "path",
+            "description": "The ID of the Juz",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the Juz",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quran/ayah": {
+      "get": {
+        "tags": [
+          "quran"
+        ],
+        "summary": "Get all Ayah",
+        "operationId": "getAllAyah",
+        "responses": {
+          "200": {
+            "description": "List of all Ayah",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quran/ayah/surah/{surahId}": {
+      "get": {
+        "tags": [
+          "quran"
+        ],
+        "summary": "Get Ayah by Surah",
+        "operationId": "getAyahSurah",
+        "parameters": [
+          {
+            "name": "surahId",
+            "in": "path",
+            "description": "The ID of the Surah",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Ayah in the specified Surah",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_2"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doa": {
+      "get": {
+        "tags": [
+          "doa"
+        ],
+        "summary": "Get all Doa",
+        "operationId": "getAllDoa",
+        "responses": {
+          "200": {
+            "description": "List of all Doa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_3"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doa/{source}": {
+      "get": {
+        "tags": [
+          "doa"
+        ],
+        "summary": "Get specific Doa by source",
+        "operationId": "getDoa",
+        "parameters": [
+          {
+            "name": "source",
+            "in": "path",
+            "description": "The source of the Doa",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the Doa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dzikir/{source}": {
+      "get": {
+        "tags": [
+          "dzikir"
+        ],
+        "summary": "Get Dzikir by source",
+        "operationId": "getDzikir",
+        "parameters": [
+          {
+            "name": "source",
+            "in": "path",
+            "description": "The source of the Dzikir",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the Dzikir",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hadits": {
+      "get": {
+        "tags": [
+          "hadits"
+        ],
+        "summary": "Get all Hadits",
+        "operationId": "getAllHadits",
+        "responses": {
+          "200": {
+            "description": "List of all Hadits",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/inline_response_200_5"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hadits/{nomor}": {
+      "get": {
+        "tags": [
+          "hadits"
+        ],
+        "summary": "Get specific Hadits",
+        "operationId": "getHadits",
+        "parameters": [
+          {
+            "name": "nomor",
+            "in": "path",
+            "description": "The number of the Hadits",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the Hadits",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_5"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Al-Fatiha"
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Juz 1"
+          }
+        }
+      },
+      "inline_response_200_2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "text": {
+            "type": "string",
+            "example": "In the name of Allah, the Most Gracious, the Most Merciful."
+          }
+        }
+      },
+      "inline_response_200_3": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "text": {
+            "type": "string",
+            "example": "O Allah, grant us success."
+          }
+        }
+      },
+      "inline_response_200_4": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "text": {
+            "type": "string",
+            "example": "Subhanallah, Alhamdulillah, Allahu Akbar."
+          }
+        }
+      },
+      "inline_response_200_5": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "text": {
+            "type": "string",
+            "example": "The best of you are those who have the best manners."
+          }
+        }
+      }
+    }
+  }
+}
