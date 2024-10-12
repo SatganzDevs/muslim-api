@@ -5,6 +5,7 @@ const dzikir = require("../controllers/dzikirController");
 const hadits = require("../controllers/haditsController");
 const router = express.Router();
 
+// Middleware for caching
 router.get((req, res, next) => {
   res.setHeader(
     "Cache-Control",
@@ -12,6 +13,8 @@ router.get((req, res, next) => {
   );
   next();
 });
+
+// API documentation endpoint
 router.get("/", (req, res) =>
   res.status(200).send({
     quran: {
@@ -127,6 +130,8 @@ router.get("/", (req, res) =>
     maintaner: "Otang45",
   })
 );
+
+// Quran routes
 router.get("/quran/surah", quran.getAllSurah);
 router.get("/quran/surah/:surahId", quran.getSurah);
 router.get("/quran/juz", quran.getAllJuz);
@@ -148,14 +153,18 @@ router.get("/quran/word", quran.getAllWord);
 router.get("/quran/word/:surahId/", quran.getWordSurah);
 router.get("/quran/word/:surahId/:ayahId", quran.getWord);
 
+// Doa routes
 router.get("/doa", doa.getAllDoa);
 router.get("/doa/:source", doa.getDoa);
 
+// Dzikir routes
 router.get("/dzikir/:source", dzikir.getDzikir);
 
+// Hadits routes
 router.get("/hadits", hadits.getAllHadits);
 router.get("/hadits/:nomor", hadits.getHadits);
 
+// Handle 404 for all other routes
 router.all("*", (req, res) =>
   res.status(404).send({
     code: 404,
