@@ -35,7 +35,7 @@ router.get("/", (req, res) =>
 <script>
 window.onload = function() {
 const ui = SwaggerUIBundle({
-url: "../../docs.json",
+url: "../docs.json",
 dom_id: '#swagger-ui',
 presets: [SwaggerUIBundle.presets.apis],
 layout: "BaseLayout"
