@@ -35,7 +35,7 @@ router.get("/", (req, res) =>
 <script>
 window.onload = function() {
 const ui = SwaggerUIBundle({
-url: "https://raw.githubusercontent.com/SatganzDevs/muslim-api/refs/heads/main/src/docs.json",
+url: "https://raw.githubusercontent.com/SatganzDevs/muslim-api/main/src/docs.json",
 dom_id: '#swagger-ui',
 presets: [SwaggerUIBundle.presets.apis],
 layout: "BaseLayout"
